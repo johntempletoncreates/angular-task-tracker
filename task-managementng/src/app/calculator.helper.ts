@@ -1,4 +1,5 @@
-export interface Calculator {
+console.log('Calculator demo started');
+interface Calculator {
   add(a: number, b: number): number;
   subtract: (a: number, b: number) => number;
 }
