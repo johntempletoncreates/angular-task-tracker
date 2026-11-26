@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { runCalculatorDemo } from './calculator.helper';
 
 @Component({
   imports: [RouterOutlet],
@@ -7,6 +8,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('task-managementng');
+
+  ngOnInit(): void {
+    runCalculatorDemo();
+  }
 }
