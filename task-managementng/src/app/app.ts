@@ -14,10 +14,11 @@ import { Manager } from './bankacc.classexample';
 // Import our standalone child component so we can register it and use <app-user-badge />
 import { UserBadgeComponent } from './user-badge/user-badge.component';
 import { AppleBoxComponent } from './user-badge/apple-box.component';
+import { SubmitBoxComponent } from './user-badge/profile';
 @Component({
   // Declares dependencies used inside this component's template.
   // Because UserBadgeComponent is in `imports`, Angular allows <app-user-badge /> here.
-  imports: [RouterOutlet, UserBadgeComponent, AppleBoxComponent],
+  imports: [RouterOutlet, UserBadgeComponent, AppleBoxComponent, SubmitBoxComponent],
 
   // Root selector where Angular mounts this top-level component (typically in index.html).
   selector: 'app-root',
@@ -34,7 +35,8 @@ import { AppleBoxComponent } from './user-badge/apple-box.component';
       <app-user-badge></app-user-badge>
 <h1>My Fruit Basket</h1>
     <app-apple-box [count]="apples()" (eatClicked)="reduceApple()" />
-
+    <h1>Property Binding Demo</h1>
+    <app-submit-box />
     </main>
 
     <router-outlet /> 
