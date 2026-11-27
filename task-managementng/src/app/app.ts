@@ -13,11 +13,11 @@ import { Manager } from './bankacc.classexample';
 
 // Import our standalone child component so we can register it and use <app-user-badge />
 import { UserBadgeComponent } from './user-badge/user-badge.component';
-
+import { AppleBoxComponent } from './user-badge/apple-box.component';
 @Component({
   // Declares dependencies used inside this component's template.
   // Because UserBadgeComponent is in `imports`, Angular allows <app-user-badge /> here.
-  imports: [RouterOutlet, UserBadgeComponent],
+  imports: [RouterOutlet, UserBadgeComponent, AppleBoxComponent],
 
   // Root selector where Angular mounts this top-level component (typically in index.html).
   selector: 'app-root',
@@ -32,11 +32,15 @@ import { UserBadgeComponent } from './user-badge/user-badge.component';
       <h1>Team Directory</h1>
       <app-user-badge />
       <app-user-badge></app-user-badge>
+<h1>My Fruit Basket</h1>
+    <app-apple-box [count]="apples()" (eatClicked)="reduceApple()" />
+
     </main>
 
     <router-outlet /> 
   `,
 })// <router-outlet /> A built-in directive from RouterOutlet (also in App's imports).
+
 export class App implements OnInit {
   // Read-only signal holding the app name (`title()` reads its current value).
   protected readonly title = signal('task-managementng');
@@ -47,9 +51,14 @@ export class App implements OnInit {
     runTaskInterfacesDemo();
 
     // Instantiate Manager and log a public property to the browser/dev console.
-    const mgr = new Manager("moinuddin chisti", "Engineering", 120000);
+    const mgr = new Manager("sampada", "Engineering", 120000);
     console.log(mgr.name);         // Allowed: public
     // console.log(mgr.department); // Error: protected
     // console.log(mgr.salary);     // Error: private
   }
+  apples = signal(5);
+  reduceApple(): void {
+    this.apples.update((current) => current - 1);
+  }
+
 }
