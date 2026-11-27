@@ -27,3 +27,4 @@ const mgr = new Manager("muinuddin chisti", "Engineering", 120000);
 console.log(mgr.name);         // Allowed: public
 // console.log(mgr.department); // Error: protected
 // console.log(mgr.salary);     // Error: private
+//
